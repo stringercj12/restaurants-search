@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Slider from 'react-slick';
 
-export const Wrapper = styled.aside`
+export const Wrapper = styled.section`
   display: flex;
   flex-direction: row;
 `;
@@ -18,7 +18,7 @@ export const Search = styled.section`
   flex-direction: column;
   justify-content: center;
   background-color: ${({ theme }) => theme.colors.shape};
-  padding: 16px;
+  padding: 10px;
 `;
 
 export const Logo = styled.img`
@@ -26,6 +26,10 @@ export const Logo = styled.img`
   max-width: 100%;
   margin-inline: auto;
   margin-bottom: 20px;
+`;
+
+export const Form = styled.form`
+  padding: 13px;
 `;
 
 export const Input = styled.input`
@@ -38,11 +42,15 @@ export const Input = styled.input`
 
 export const Map = styled.div`
   background-color: red;
-  width: 100%;
+  width: calc(100% - 360px);
 `;
 
 export const Carousel = styled(Slider)`
-  margin-right: 16px;
+  margin-left: 10px;
+
+  &:first-child {
+    margin-left: 0px;
+  }
 `;
 
 export const CarouselTitle = styled.h1`

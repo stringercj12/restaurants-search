@@ -4,8 +4,8 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   border-radius: 3px;
   background-image: url(${({ photo }) => photo});
   background-repeat: no-repeat;
