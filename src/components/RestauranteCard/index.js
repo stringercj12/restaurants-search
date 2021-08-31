@@ -12,18 +12,29 @@ import {
   RestaurantImage,
 } from './styles';
 
-const RestauranteCard = () => {
+const RestauranteCard = ({ restaurant }) => {
   return (
     <Restaurant>
       <RestaurantInfo>
-        <RestaurantTitle>Nome do restaurante</RestaurantTitle>
+        <RestaurantTitle>{restaurant.name}</RestaurantTitle>
         <RestaurantAvaliation>
-          <ReactStars count={5} value={4} isHalf edit={false} size={24} activeColor="#e7711c" />,
+          <ReactStars
+            count={5}
+            value={restaurant.rating}
+            isHalf
+            edit={false}
+            size={24}
+            activeColor="#e7711c"
+          />
+          ,
         </RestaurantAvaliation>
-        <RestaurantAddress>Rua Rio de Janeiro 120</RestaurantAddress>
+        <RestaurantAddress>{restaurant.vicinity || restaurant.formatted_address}</RestaurantAddress>
       </RestaurantInfo>
 
-      <RestaurantImage src={restauranteImg} alt="Foto do restaurante" />
+      <RestaurantImage
+        src={restaurant.photos ? { uri: restaurant.photos[0].getUrl() } : restauranteImg}
+        alt="Foto do restaurante"
+      />
     </Restaurant>
   );
 };

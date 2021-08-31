@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 import logo from '../../assets/logo.svg';
 import resturanteImg from '../../assets/restaurante-fake.png';
@@ -11,6 +12,7 @@ export function Home() {
   const [search, setSearch] = useState('');
   const [query, setQuery] = useState(null);
   const [modalOpened, setModalOpened] = useState(false);
+  const { restaurants } = useSelector((state) => state.restaurants);
 
   const settings = {
     dots: false,
@@ -45,14 +47,20 @@ export function Home() {
           <CarouselTitle>Na sua área</CarouselTitle>
 
           <Carousel {...settings}>
-            {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((item) => (
-              <ImageCard photo={resturanteImg} title="Nome do resturante" key={String(item)} />
+            {restaurants.map((restaurant) => (
+              <ImageCard
+                photo={restaurant.photos ? { uri: restaurant.photos[0].getUrl() } : resturanteImg}
+                title={restaurant.name}
+                key={String(restaurant)}
+              />
             ))}
           </Carousel>
           <button type="button" onClick={() => setModalOpened(!modalOpened)}>
             Abrir modal
           </button>
-          <RestauranteCard />
+          {restaurants.map((restaurant) => (
+            <RestauranteCard restaurant={restaurant} />
+          ))}
         </Search>
       </Container>
       <Map query={query} />
