@@ -3,22 +3,13 @@ import React, { useState } from 'react';
 import logo from '../../assets/logo.svg';
 import resturanteImg from '../../assets/restaurante-fake.png';
 
-import { ImageCard, RestauranteCard, Modal } from '../../components';
+import { ImageCard, RestauranteCard, Modal, Map } from '../../components';
 
-import {
-  Wrapper,
-  Container,
-  Search,
-  Logo,
-  Form,
-  Input,
-  Carousel,
-  CarouselTitle,
-  Map,
-} from './styles';
+import { Wrapper, Container, Search, Logo, Form, Input, Carousel, CarouselTitle } from './styles';
 
 export function Home() {
   const [search, setSearch] = useState('');
+  const [query, setQuery] = useState(null);
   const [modalOpened, setModalOpened] = useState(false);
 
   const settings = {
@@ -31,6 +22,12 @@ export function Home() {
     arrows: false,
   };
 
+  function handleKeyPress(e) {
+    if (e.key === 'Enter') {
+      setQuery(search);
+    }
+  }
+
   return (
     <Wrapper>
       <Container>
@@ -39,8 +36,9 @@ export function Home() {
           <Form>
             <Input
               placeholder="Pesquisar"
-              onChange={(e) => setSearch(e.target.value)}
               value={search}
+              onKeyPress={handleKeyPress}
+              onChange={(e) => setSearch(e.target.value)}
             />
           </Form>
           {search}
@@ -57,7 +55,7 @@ export function Home() {
           <RestauranteCard />
         </Search>
       </Container>
-      <Map />
+      <Map query={query} />
       <Modal open={modalOpened} onClose={() => setModalOpened(!modalOpened)} />
     </Wrapper>
   );
