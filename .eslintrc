@@ -62,3 +62,4 @@
   "plugins": ["react", "prettier", "react-hooks"],
   "extends": ["airbnb", "prettier"]
 }
+

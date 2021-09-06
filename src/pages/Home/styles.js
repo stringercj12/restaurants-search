@@ -1,35 +1,12 @@
 import styled from 'styled-components';
 import Slider from 'react-slick';
+import { FiSearch } from 'react-icons/fi';
 
-export const Wrapper = styled.section`
-  display: flex;
-  flex-direction: row;
-`;
-
-export const Container = styled.aside`
-  background-color: ${({ theme }) => theme.colors.background};
-  width: 360px;
-  height: 100vh;
-  overflow-y: auto;
-`;
-
-export const Search = styled.section`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background-color: ${({ theme }) => theme.colors.shape};
-  padding: 10px;
-`;
-
-export const Logo = styled.img`
-  width: 150px;
-  max-width: 100%;
-  margin-inline: auto;
-  margin-bottom: 20px;
-`;
+import { Text } from '../../components';
 
 export const Form = styled.form`
   padding: 13px;
+  position: relative;
 `;
 
 export const Input = styled.input`
@@ -40,24 +17,50 @@ export const Input = styled.input`
   padding: 5px;
 `;
 
-export const Map = styled.div`
-  background-color: red;
-  width: calc(100% - 360px);
+export const ButtonIcon = styled.button`
+  background-color: transparent;
+  border: none;
+  outline: none;
+  position: absolute;
+  top: 22px;
+  right: 5px;
+  cursor: pointer;
+`;
+
+export const Icon = styled(FiSearch)`
+  font-size: 22px;
+  color: ${({ theme }) => theme.colors.text};
+`;
+
+export const Container = styled.aside`
+  background-color: ${({ theme: { colors } }) => colors.background};
+  width: 360px;
+  height: 100vh;
+  overflow-y: scroll;
+`;
+
+export const Search = styled.section`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #ffffff;
+  padding: 16px;
+`;
+
+export const Logo = styled.img`
+  margin: 15px;
+`;
+
+export const Title = styled(Text)`
+  margin: 16px 0;
 `;
 
 export const Carousel = styled(Slider)`
-  margin-left: 10px;
-
-  &:first-child {
-    margin-left: 0px;
+  .slick-slide {
+    margin-right: 16px;
   }
 `;
 
-export const CarouselTitle = styled.h1`
-  font-family: ${({ theme }) => theme.fonts.regular};
-  color: ${({ theme }) => theme.colors.text};
-  font-size: 24px;
-  font-weight: bold;
-  line-height: 29px;
-  margin: 16px 0px;
+export const Wrapper = styled.div`
+  display: flex;
 `;
